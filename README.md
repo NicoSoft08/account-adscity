@@ -1,70 +1,28 @@
-# Getting Started with Create React App
+# 👤 account.adscity.net – Gestion des Comptes Utilisateurs AdsCity
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+*account.adscity.net* est l’interface utilisateur dédiée à la gestion de compte dans l’écosystème AdsCity.  
+Ce portail permet aux utilisateurs de modifier leurs informations personnelles, visualiser leur activité, gérer leurs abonnements, sécuriser leur compte, et bien plus.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🎯 Objectif
 
-### `npm start`
+Fournir une interface sécurisée, fluide et cohérente permettant à chaque utilisateur de :
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Accéder à son profil personnel
+- Modifier ses informations (nom, email, téléphone, etc.)
+- Accéder à ses abonnements (type, statut, expiration)
+- Gérer les paramètres de sécurité (mot de passe, 2FA, sessions)
+- Consulter l'historique des connexions et des activités liées à son compte
+- Supprimer ou désactiver son compte si besoin
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 🔐 Fonctionnalités principales
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- 🔑 Connexion unique via auth.adscity.net (SSO - Single Sign-On)
+- 🔄 Redirection intelligente post-authentification (redirect_uri)
+- 🧾 Visualisation et modification des informations personnelles
+- 🛡 Gestion de la sécurité du compte (mot de passe, notifications)
+- 📊 Historique des connexions
+- 🚫 Option de désactivation ou suppression du compte

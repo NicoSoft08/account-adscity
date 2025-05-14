@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
-import { X } from 'lucide-react';
+import { ExternalLink, X } from 'lucide-react';
 import { defaultAvatar, navItems } from '../../config';
 import { NavLink } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthContext';
 import '../../styles/Sidebar.scss';
 
 export default function Sidebar({ isOpen, closeSidebar }) {
-    const { userData } = useContext(AuthContext);
+    const { userData, userRole } = useContext(AuthContext);
 
     const profileImage = userData?.profilURL || defaultAvatar;
 
@@ -30,7 +30,7 @@ export default function Sidebar({ isOpen, closeSidebar }) {
 
                     {/* NAV ITEMS */}
                     <nav className="nav">
-                        {navItems.map((item) => (
+                        {navItems(userRole).map((item) => (
                             <NavLink
                                 key={item.path}
                                 to={item.path}
@@ -39,6 +39,9 @@ export default function Sidebar({ isOpen, closeSidebar }) {
                             >
                                 <span className="nav-icon">{item.icon}</span>
                                 <span className="nav-label">{item.label}</span>
+                                {(item.label === 'Boutique' || item.label === 'Tableau de bord') && (
+                                    <ExternalLink className='external-link' size={16} />
+                                )}
                             </NavLink>
                         ))}
                     </nav>

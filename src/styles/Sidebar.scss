@@ -62,6 +62,10 @@
                 text-decoration: none;
                 border-radius: 5px;
 
+                .external-link {
+                    margin-left: auto;
+                }
+
                 &:hover {
                     background-color: rgba(255, 255, 255, 0.1);
                 }
@@ -106,10 +110,13 @@
 
                 .user-text {
                     .user-name {
+                        margin: 0;
+
                         font-weight: $font-regular;
                     }
-
+                    
                     .user-email {
+                        margin: 0;
                         font-size: 0.9rem;
                         color: #ccc;
                         font-weight: $font-light;

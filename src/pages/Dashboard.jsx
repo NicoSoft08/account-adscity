@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { AlertTriangle, Shield, User } from 'lucide-react';
 import { CardItem } from '../components/ui/Card';
 import { Link } from 'react-router-dom';
 import { navItems } from '../config';
 import { user } from '../data/mockData';
 import '../styles/Dashboard.scss';
+import { AuthContext } from '../contexts/AuthContext';
+import { formatDate } from '../lib/utils';
 
 const getGreeting = () => {
     const hour = new Date().getHours();
@@ -16,6 +18,7 @@ const getGreeting = () => {
 };
 
 export default function Dashboard() {
+    const { userData, userRole } = useContext(AuthContext);
     const [notifications] = useState([
         {
             id: '1',
@@ -37,7 +40,7 @@ export default function Dashboard() {
     return (
         <div className="account-dashboard">
             <h1 className="greeting">
-                {getGreeting()}{user.name ? `, ${user.name}` : ''} 👋
+                {getGreeting()}, {userData?.firstName} {userData?.lastName} 👋
             </h1>
 
             <div className="quick-access-container">
@@ -45,8 +48,8 @@ export default function Dashboard() {
                 <CardItem title="Accès Rapide" className="mb-6">
                     <div className="quick-access-items">
 
-                        {navItems.map((item, index) => {
-                            if (item.label === 'Accueil') return null;
+                        {navItems(userRole).map((item, index) => {
+                            if (item.label === 'Accueil' || item.label === 'Tableau de bord') return null;
                             return (
                                 <QuickAccessItem
                                     key={index}
@@ -67,8 +70,8 @@ export default function Dashboard() {
                     <div className="user-info">
                         <img src={user.avatar} alt="" className="avatar" />
                         <div className="user-details">
-                            <h3>{user.name}</h3>
-                            <p>{user.email}</p>
+                            <h3>{userData?.firstName + ' ' + userData?.lastName}</h3>
+                            <p>{userData?.email}</p>
                         </div>
                     </div>
 
@@ -83,13 +86,13 @@ export default function Dashboard() {
                         <div>
                             <span>Membre depuis</span>
                             <span>
-                                {new Date(user.createdAt).toLocaleDateString()}
+                                {formatDate(userData?.createdAt)}
                             </span>
                         </div>
                         <div>
                             <span>Dernière connexion</span>
                             <span>
-                                {new Date(user.lastLogin).toLocaleDateString()}
+                                {formatDate(userData?.lastLoginAt)}
                             </span>
                         </div>
                     </div>

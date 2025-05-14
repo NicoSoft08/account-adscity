@@ -31,7 +31,6 @@ export const AuthProvider = ({ children }) => {
                 setUserRole(parsedUser.role);
             } catch (error) {
                 console.error("Error parsing stored user data:", error);
-                localStorage.removeItem('user'); // Remove invalid data
             }
         }
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import '../styles/Profile.scss';
 import PageHeader from '../components/PageHeader';
 import { user } from '../data/mockData';
@@ -7,15 +7,20 @@ import { Camera, Save, UserCog, X } from 'lucide-react';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '../components/ui/Card';
 import { formatDate } from '../lib/utils';
 import Avatar from '../components/ui/Avatar';
+import { AuthContext } from '../contexts/AuthContext';
+import { defaultAvatar } from '../config';
 
 export default function Profile() {
+    const { userData } = useContext(AuthContext);
     const [isEditing, setIsEditing] = useState(false);
     const [formData, setFormData] = useState({
-        name: user.name,
-        email: user.email,
-        phone: user.phone,
-        country: user.country,
+        name: userData.name,
+        email: userData.email,
+        phone: userData.phone,
+        country: userData.country,
     });
+
+    const profileImage = userData?.profilURL || defaultAvatar;
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -57,7 +62,7 @@ export default function Profile() {
                     <form onSubmit={handleSubmit} className="profile-form">
                         <div className="form-header">
                             <div className="avatar-wrapper">
-                                <Avatar src={user.avatar} name={user.name} size="xl" />
+                                <Avatar src={profileImage} name={userData.firstName + ' ' + userData.lastName} size="xl" />
                                 {isEditing && (
                                     <div className="avatar-edit-icon">
                                         <label htmlFor="avatar-upload" className="avatar-upload-label">
@@ -92,7 +97,7 @@ export default function Profile() {
                                         className="field-input"
                                     />
                                 ) : (
-                                    <p className="field-value">{user.name}</p>
+                                    <p className="field-value">{userData.firstName + ' ' + userData.lastName}</p>
                                 )}
                             </div>
 
@@ -108,7 +113,7 @@ export default function Profile() {
                                         className="field-input"
                                     />
                                 ) : (
-                                    <p className="field-value">{user.email}</p>
+                                    <p className="field-value">{userData.email}</p>
                                 )}
                             </div>
 
@@ -124,7 +129,7 @@ export default function Profile() {
                                         className="field-input"
                                     />
                                 ) : (
-                                    <p className="field-value">{user.phone}</p>
+                                    <p className="field-value">{userData.phoneNumber}</p>
                                 )}
                             </div>
 
@@ -148,7 +153,7 @@ export default function Profile() {
                                         <option value="China">China</option>
                                     </select>
                                 ) : (
-                                    <p className="field-value">{user.country}</p>
+                                    <p className="field-value">{userData.country}</p>
                                 )}
                             </div>
                         </div>

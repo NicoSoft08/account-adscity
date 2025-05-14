@@ -2,8 +2,8 @@ import React, { useContext, useEffect, useState } from 'react';
 import Sidebar from '../components/navigation/Sidebar';
 import Header from '../components/Header';
 import { Outlet } from 'react-router-dom';
-import '../styles/AccountLayout.scss';
 import { AuthContext } from '../contexts/AuthContext';
+import '../styles/AccountLayout.scss';
 
 const authURL = process.env.REACT_APP_AUTH_URL;
 const homeURL = process.env.REACT_APP_HOME_URL;

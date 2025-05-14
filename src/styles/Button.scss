@@ -1,0 +1,120 @@
+@import './fonts.scss';
+@import './variables.scss';
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: $font-regular;
+    font-family: 'Ubuntu', sans-serif;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    gap: 0.5rem;
+    outline: none;
+
+    &:disabled {
+        opacity: 0.5;
+        pointer-events: none;
+    }
+
+    &--full {
+        width: 100%;
+    }
+
+    // Variants
+    &--primary {
+        background-color: $two;
+        color: $white;
+
+        &:hover {
+            background-color: darken($two, 10%);
+        }
+    }
+
+    &--secondary {
+        background-color: #6b7280;
+        color: #ffffff;
+
+        &:hover {
+            background-color: #4b5563;
+        }
+    }
+
+    &--outline {
+        background-color: #ffffff;
+        color: #1f2937;
+        border: 1px solid #d1d5db;
+
+        &:hover {
+            background-color: #f9fafb;
+        }
+    }
+
+    &--ghost {
+        background-color: transparent;
+        color: #1f2937;
+
+        &:hover {
+            background-color: #f3f4f6;
+        }
+    }
+
+    &--danger {
+        background-color: #dc2626;
+        color: #ffffff;
+
+        &:hover {
+            background-color: #b91c1c;
+        }
+    }
+
+    // Sizes
+    &--sm {
+        font-size: 0.75rem;
+        padding: 0.375rem 0.625rem;
+        border-radius: 0.25rem;
+    }
+
+    &--md {
+        font-size: 0.875rem;
+        padding: 0.5rem 1rem;
+        border-radius: 0.375rem;
+    }
+
+    &--lg {
+        font-size: 1rem;
+        padding: 0.75rem 1.5rem;
+        border-radius: 0.375rem;
+    }
+
+    // Spinner
+    &__spinner {
+        display: inline-flex;
+
+        &-icon {
+            width: 1rem;
+            height: 1rem;
+            animation: spin 1s linear infinite;
+        }
+    }
+
+    // Icons
+    &__icon {
+        display: inline-flex;
+
+        &--left {
+            margin-right: 0.25rem;
+        }
+
+        &--right {
+            margin-left: 0.25rem;
+        }
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}

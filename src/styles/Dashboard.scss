@@ -1,0 +1,378 @@
+@import './fonts.scss';
+@import './variables.scss';
+
+.account-dashboard {
+    padding: 20px;
+
+    .greeting {
+        font-size: 2rem;
+        margin-bottom: 20px;
+        color: #333;
+
+        @media (max-width: 576px) {
+            font-size: 1rem;
+        }
+    }
+
+    .quick-access-container {
+        margin-bottom: 24px;
+
+
+        .quick-access-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 16px;
+        }
+    }
+
+    .account-overview {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-bottom: 24px;
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+
+            .avatar {
+                border-radius: 50%;
+                width: 40px;
+                height: 40px;
+                margin-right: 16px;
+            }
+
+            .user-details {
+                h3 {
+                    margin: 0;
+                    font-size: 1.2rem;
+                    font-weight: $font-regular;
+                    color: #333;
+                }
+
+                p {
+                    font-weight: $font-light;
+                    margin: 0;
+                    color: #666;
+                }
+            }
+        }
+
+        .account-status {
+            display: flex;
+            flex-direction: column;
+
+            div {
+                display: flex;
+                justify-content: space-between;
+                margin: 4px 0;
+                border-bottom: 1px solid #eee;
+                padding: 8px 0;
+
+                span:first-child {
+                    font-weight: $font-light;
+                    font-size: 0.9rem;
+                    color: #333;
+                }
+
+                span:last-child {
+                    font-weight: $font-regular;
+                    font-size: 0.9rem;
+                    color: $black;
+                }
+
+                .status-active {
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+
+                    span:empty {
+                        display: inline-block;
+                        background-color: #10b981;
+                        width: 10px;
+                        height: 10px;
+                        border-radius: 50%;
+                    }
+                }
+            }
+        }
+    }
+
+    .recent-activity {
+        margin-bottom: 24px;
+
+        .view-all {
+            margin-top: 12px;
+            text-align: center;
+
+            a {
+                text-decoration: none;
+                color: #2563eb;
+                font-size: 0.875rem;
+                // font-weight: $font-light;
+            }
+        }
+    }
+
+    .mark-read-button {
+        background-color: transparent;
+        border: none;
+        color: #007bff;
+        cursor: pointer;
+        font-family: 'Ubuntu', sans-serif;
+        font-size: 0.9rem;
+    }
+
+    .notifications-list {
+        margin-top: 12px;
+
+
+        .view-all-notifications {
+            text-align: center;
+            margin-top: 1rem;
+
+            a {
+                text-decoration: none;
+                color: #2563eb;
+                font-size: 0.875rem;
+                // font-weight: $font-light;
+                font-family: 'Ubuntu', sans-serif;
+            }
+        }
+    }
+
+    .mark-read-button {
+        background-color: transparent;
+        border: none;
+        color: #007bff;
+        cursor: pointer;
+        font-size: 0.9rem;
+    }
+}
+
+
+// QUICK ACCESS
+.quick-access-item {
+    display: flex;
+    align-items: flex-start;
+    text-decoration: none;
+    color: #333;
+    padding: 12px;
+    gap: 12px;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    transition: background 0.2s ease, transform 0.2s ease;
+
+    &:hover {
+        background-color: #eef3ff;
+        transform: translateY(-2px);
+    }
+
+    .quick-access-icon-wrapper {
+        width: 40px;
+        height: 40px;
+        border-radius: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: $white;
+
+        .quick-access-icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            svg {
+                &.text-blue {
+                    color: #3b82f6;
+                }
+
+                &.text-emerald {
+                    color: #10b981;
+                }
+
+                &.text-gray {
+                    color: #6b7280;
+                }
+
+                &.text-purple {
+                    color: #8b5cf6;
+                }
+
+                &.text-amber {
+                    color: #f59e0b;
+                }
+
+                &.text-red {
+                    color: #ef4444;
+                }
+            }
+        }
+
+        .quick-access-badge {
+            position: absolute;
+            top: -6px;
+            right: -6px;
+            background-color: #ff4d4f;
+            color: #fff;
+            font-size: 0.7rem;
+            padding: 2px 6px;
+            border-radius: 12px;
+            font-weight: 600;
+        }
+    }
+
+    .quick-access-details {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        // justify-content: center;
+
+        .quick-access-label {
+            font-size: 0.95rem;
+            font-weight: $font-regular;
+        }
+
+        .quick-access-description {
+            font-size: 0.85rem;
+            margin-top: 8px;
+            font-weight: $font-light;
+        }
+    }
+
+}
+
+// ACTIVITY ITEM
+.activity-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+
+    .activity-icon {
+        width: 36px;
+        height: 36px;
+        border-radius: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+
+        &.info {
+            background-color: lighten(#3b82f6, 30%);
+
+            svg {
+                color: darken(#3b82f6, 10%);
+            }
+        }
+
+        &.security {
+            background-color: lighten(#10b981, 30%);
+
+            svg {
+                color: darken(#10b981, 10%);
+            }
+        }
+
+        &.alert {
+            background-color: lighten(#f59e0b, 30%);
+
+            svg {
+                color: darken(#f59e0b, 10%);
+            }
+        }
+    }
+
+    .activity-content {
+        flex: 1;
+
+        .activity-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .activity-title {
+                font-weight: $font-regular;
+                margin: 0;
+                font-size: 1rem;
+            }
+
+            .activity-time {
+                font-size: 13px;
+                color: #666;
+                font-weight: $font-light;
+            }
+        }
+
+        .activity-description {
+            margin: 4px 0 0;
+            font-size: 14px;
+            color: #444;
+            font-weight: $font-light;
+        }
+    }
+}
+
+
+// NOTIFICATION ITEM
+.notification-item {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    background-color: $white;
+
+    &.unread {
+        background-color: #e8f0fe;
+    }
+
+    .notification-dot {
+        position: absolute;
+        left: 8px;
+        top: 16px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: #2563eb; // bleu primaire
+    }
+
+    .notification-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 4px;
+
+        .notification-title {
+            font-weight: 600;
+            font-size: 1rem;
+
+            &.info {
+                color: #2563eb;
+            }
+
+            &.warning {
+                color: #d97706;
+            }
+
+            &.security {
+                color: #dc2626;
+            }
+
+            &.success {
+                color: #16a34a;
+            }
+        }
+
+        .notification-date {
+            font-size: 0.85rem;
+            color: #555;
+        }
+    }
+
+    .notification-message {
+        font-size: 0.95rem;
+        color: #333;
+        margin-top: 4px;
+    }
+}

@@ -4,29 +4,34 @@ import Header from '../components/Header';
 import { Outlet } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthContext';
 import '../styles/AccountLayout.scss';
+import { Loading } from '../customs';
 
 const authURL = process.env.REACT_APP_AUTH_URL;
 const homeURL = process.env.REACT_APP_HOME_URL;
 
 export default function AccountLayout() {
-    const { currentUser, userRole } = useContext(AuthContext);
+    const { currentUser, userRole, loading } = useContext(AuthContext);
     const [sidebarOpen, setSidebarOpen] = useState(false);
 
     useEffect(() => {
+        if (loading) return;
+
         if (!currentUser) {
-            window.location.href = `${authURL}/signin?redirect=${encodeURIComponent(window.location.href)}`;
+            window.location.href = `${authURL}/signin?redirect=${window.location.href}`;
+            return; // important pour stopper le flux ici
         }
 
-        if (userRole !== 'admin' && userRole !== 'user') {
-            // Redirection vers une page d'accès refusé
+        if (userRole && userRole !== 'admin' && userRole !== 'user') {
             window.location.href = `${homeURL}/access-denied`;
-            return;
         }
-    }, [currentUser, userRole]);
+    }, [currentUser, userRole, loading]);
+
 
     const toggleSidebar = () => {
         setSidebarOpen(!sidebarOpen);
     };
+
+    if (loading || !currentUser) return <Loading />;
 
     return (
         <div className="account-layout">

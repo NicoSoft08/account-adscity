@@ -148,6 +148,7 @@ export const AuthProvider = ({ children }) => {
     // Provide values and functions in the context
     const value = {
         currentUser,
+        loading,
         userData,
         userRole,
         logout,

@@ -10,7 +10,8 @@ const authURL = process.env.REACT_APP_AUTH_URL;
 
 export default function Header({ toggleSidebar }) {
     const { currentUser } = useContext(AuthContext);
-    const [isLoading, setIsLoading] = useState(true);
+    console.log(currentUser);
+    const [isLoading, setIsLoading] = useState(false);
     const [notifications] = useState([
         {
             id: '1',
@@ -31,22 +32,21 @@ export default function Header({ toggleSidebar }) {
     ]);
     const [toast, setToast] = useState({ show: false, type: '', message: '' });
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        const getNotifications = async () => {
-            const userID = currentUser.uid;
-            if (!userID) {
-                setToast({ show: true, type: 'error', message: 'Impossible de charger les notifications. Veuillez réessayer.' });
-                window.location.href = `${authURL}/signin?redirect_url=${window.location.href}`;
-                return;
-            }
+    //     const getNotifications = async () => {
+    //         if (!currentUser) {
+    //             setToast({ show: true, type: 'error', message: 'Impossible de charger les notifications. Veuillez réessayer.' });
+    //             window.location.href = `${authURL}/signin?redirect=${window.location.href}`;
+    //             return;
+    //         }
 
-            setIsLoading(false);
-        }
+    //         setIsLoading(false);
+    //     }
 
-        // fetchUnreadMessagesCount();
-        getNotifications();
-    }, [currentUser]);
+    //     // fetchUnreadMessagesCount();
+    //     getNotifications();
+    // }, [currentUser]);
 
 
     if (isLoading) return <Loading />

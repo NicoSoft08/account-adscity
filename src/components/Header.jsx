@@ -10,7 +10,6 @@ const authURL = process.env.REACT_APP_AUTH_URL;
 
 export default function Header({ toggleSidebar }) {
     const { currentUser } = useContext(AuthContext);
-    console.log(currentUser);
     const [isLoading, setIsLoading] = useState(false);
     const [notifications] = useState([
         {

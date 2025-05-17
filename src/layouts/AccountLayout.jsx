@@ -31,7 +31,7 @@ export default function AccountLayout() {
         setSidebarOpen(!sidebarOpen);
     };
 
-    if (loading || !currentUser) return <Loading />;
+    if (loading) return <Loading />;
 
     return (
         <div className="account-layout">

@@ -14,14 +14,9 @@ export default function AccountLayout() {
     const [sidebarOpen, setSidebarOpen] = useState(false);
 
     useEffect(() => {
-        if (loading) return;
-
-        if (!currentUser) {
+        if (!currentUser && !loading) {
             window.location.href = `${authURL}/signin?redirect=${window.location.href}`;
-            return; // important pour stopper le flux ici
-        }
-
-        if (userRole && userRole !== 'admin' && userRole !== 'user') {
+        } else if (userRole && userRole !== 'admin' && userRole !== 'user') {
             window.location.href = `${homeURL}/access-denied`;
         }
     }, [currentUser, userRole, loading]);
@@ -31,7 +26,7 @@ export default function AccountLayout() {
         setSidebarOpen(!sidebarOpen);
     };
 
-    if (loading) return <Loading />;
+    if (loading) return <Loading />
 
     return (
         <div className="account-layout">

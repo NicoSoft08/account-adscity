@@ -19,21 +19,31 @@ export const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const checkAuth = async () => {
-            setLoading(true);
-            const user = await fetchMe();
-            if (user) {
-                setCurrentUser(user.data.uid);
-                setUserData(user.data);
-                setUserRole(user.data.role || null);
-            } else {
+        const checkSession = async () => {
+            try {
+                setLoading(true);
+
+                const user = await fetchMe();
+                if (user) {
+                    setCurrentUser(user.data.uid);
+                    setUserData(user.data);
+                    setUserRole(user.data.role || null);
+                } else {
+                    setCurrentUser(null);
+                    setUserRole(null);
+                    setUserData(null);
+                }
+            } catch (error) {
+                console.error('Erreur lors de la récupération de la session:', error);
                 setCurrentUser(null);
                 setUserRole(null);
+                setUserData(null);
+            } finally {
+                setLoading(false);
             }
-            setLoading(false);
         };
 
-        checkAuth();
+        checkSession();
     }, []);
 
 
